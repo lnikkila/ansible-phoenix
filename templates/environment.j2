@@ -1,0 +1,7 @@
+export MIX_ENV="{{ phoenix_env }}"
+export PORT="{{ phoenix_port }}"
+
+# Extra environment variables, if any.
+{% for key, value in phoenix_env_vars.iteritems() %}
+export {{ key }}="{{ value }}"
+{% endfor %}

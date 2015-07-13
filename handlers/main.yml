@@ -1,0 +1,7 @@
+---
+
+- name: restart phoenix
+  become: true
+  service:
+    name:  phoenix
+    state: restarted

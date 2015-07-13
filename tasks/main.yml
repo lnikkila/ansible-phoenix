@@ -1,0 +1,13 @@
+---
+
+- include:     system.yml
+
+- include:     dependencies.yml
+
+- include:     brunch.yml
+  when:        phoenix_use_brunch
+
+- include:     ecto.yml
+  when:        phoenix_use_ecto
+
+- include:     service.yml

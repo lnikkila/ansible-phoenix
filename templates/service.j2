@@ -1,0 +1,13 @@
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+script
+  # Source app environment.
+  . /etc/default/phoenix
+
+  chdir {{ phoenix_path }}
+
+  # Using sudo instead of setuid so that necessary user environment variables
+  # like $HOME are present for Mix.
+  exec sudo -u {{ phoenix_user }} {{ phoenix_bin }}
+end script

@@ -1,0 +1,18 @@
+---
+
+galaxy_info:
+  description: Set up an Elixir application.
+  author:      Leo Nikkilä
+  license:     ISC
+
+  min_ansible_version: 1.9
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+
+  categories:
+    - web
+
+dependencies: []

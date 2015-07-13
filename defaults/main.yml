@@ -1,0 +1,35 @@
+---
+
+################################################################################
+# FEATURES
+
+# Whether to run a Brunch build and Ecto migrations.
+# NOTE: Using Brunch requires Node.js.
+phoenix_use_brunch: true
+phoenix_use_ecto:   true
+
+################################################################################
+# ENVIRONMENT
+
+# Mix environment (propagates to Phoenix.)
+phoenix_env: prod
+
+# Server port.
+phoenix_port: 4000
+
+# Extra environment variables you want passed to Phoenix. Feel free to add your
+# secret keys and such.
+phoenix_env_vars: {}
+
+################################################################################
+# SERVICE
+
+# Path to the app.
+phoenix_path: /var/www
+
+# User for running the server.
+phoenix_user:  phoenix
+phoenix_group: phoenix
+
+# Command for running the server.
+phoenix_bin: mix phoenix.server

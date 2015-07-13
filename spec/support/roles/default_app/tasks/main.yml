@@ -1,0 +1,20 @@
+- name: Create application directory
+  become: true
+  file:
+    state: directory
+    path:  "{{ phoenix_path }}"
+    mode:  0777
+
+- name: Install Phoenix
+  shell: "mix archive.install https://github.com/phoenixframework/phoenix/releases/download/v0.14.0/phoenix_new-0.14.0.ez --force"
+  args:
+    creates: "~/.mix/archives/phoenix_new-0.14.0.ez"
+
+- name: Set up a Phoenix application
+
+  # Feed in /dev/null to choose default values for prompts.
+  shell: "mix phoenix.new . < /dev/null"
+
+  args:
+    chdir:   "{{ phoenix_path }}"
+    creates: "{{ phoenix_path }}/mix.exs"

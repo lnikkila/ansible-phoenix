@@ -1,0 +1,28 @@
+---
+
+- name: Set up service environment for Phoenix
+  become: true
+  template:
+    dest:  /etc/default/phoenix
+    src:   environment.j2
+    owner: root
+    group: root
+    mode:  0644
+  notify: restart phoenix
+
+- name: Set up Upstart script for the Phoenix service
+  become: true
+  template:
+    dest:  /etc/init/phoenix.conf
+    src:   service.j2
+    owner: root
+    group: root
+    mode:  0644
+  notify: restart phoenix
+
+- name: Start the Phoenix service
+  become: true
+  service:
+    name:  phoenix
+    state: running
+    enabled: true

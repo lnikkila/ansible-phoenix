@@ -1,0 +1,23 @@
+---
+
+- hosts: all
+
+  vars:
+    phoenix_path: /var/www
+
+    postgresql_databases:
+      - name: www_prod
+      - name: www_dev
+      - name: www_test
+
+  roles:
+    # Dependencies
+    - { role: ANXS.postgresql, sudo:   true }
+    - { role: arielo.elixir,   become: true }
+    - { role: nodesource.node, become: true }
+
+    # Bring in the default Phoenix app for testing
+    - { role: default_app }
+
+    # Finally run this role
+    - { role: ansible-phoenix }

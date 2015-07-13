@@ -1,0 +1,26 @@
+---
+
+- name: Install dependencies through npm
+  become: true
+  become_user: "{{ phoenix_user }}"
+  npm:
+    path:       "{{ phoenix_path }}"
+    state:      present
+    global:     false
+    production: true
+
+- name: Run a Brunch build
+  become: true
+  become_user: "{{ phoenix_user }}"
+  shell: $(npm bin)/brunch build --production
+  args:
+    chdir: "{{ phoenix_path }}"
+
+- name: Digest assets
+  become: true
+  become_user: "{{ phoenix_user }}"
+  shell: mix phoenix.digest
+  environment:
+    MIX_ENV: "{{ phoenix_env }}"
+  args:
+    chdir: "{{ phoenix_path }}"

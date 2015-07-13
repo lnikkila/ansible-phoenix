@@ -1,0 +1,10 @@
+---
+
+- name: Run Ecto migrations
+  become: true
+  become_user: "{{ phoenix_user }}"
+  command: mix ecto.migrate
+  environment:
+    MIX_ENV: "{{ phoenix_env }}"
+  args:
+    chdir: "{{ phoenix_path }}"

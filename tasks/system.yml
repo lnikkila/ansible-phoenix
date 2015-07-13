@@ -1,0 +1,27 @@
+---
+
+- name: Ensure app user group exists
+  become: true
+  group:
+    state: present
+    name:  "{{ phoenix_group }}"
+  notify: restart phoenix
+
+- name: Ensure app user exists
+  become: true
+  user:
+    state: present
+    name:  "{{ phoenix_user }}"
+    group: "{{ phoenix_group }}"
+  notify: restart phoenix
+
+- name: Create app directory with correct permissions
+  become: true
+  file:
+    state:   directory
+    path:    "{{ phoenix_path }}"
+    owner:   "{{ phoenix_user }}"
+    group:   "{{ phoenix_group }}"
+    mode:    0755
+    recurse: true
+  notify: restart phoenix
