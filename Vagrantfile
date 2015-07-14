@@ -4,6 +4,10 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
 
+  config.vm.provider "virtualbox" do |vm|
+    vm.memory = 2048
+  end
+
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.network "private_network", ip: "10.10.10.10"
