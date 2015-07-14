@@ -1,6 +1,10 @@
 ---
 
 machine:
+  pre:
+    # Remove default Postgres instance
+    - sudo service postgresql stop && sudo apt-get purge -y postgresql-9.4
+
   post:
     - sudo apt-get -y install software-properties-common
     - sudo apt-add-repository -y ppa:ansible/ansible
