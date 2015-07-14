@@ -19,3 +19,6 @@ test:
   pre:
     - ansible-playbook -i spec/support/inventory spec/support/playbook.yml --syntax-check
     - ansible-playbook -i spec/support/inventory spec/support/playbook.yml --connection local
+
+    # Give the Phoenix service some time to start.
+    - sleep 5
