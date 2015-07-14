@@ -1,0 +1,17 @@
+---
+
+machine:
+  post:
+    - sudo apt-get -y install software-properties-common
+    - sudo apt-add-repository -y ppa:ansible/ansible
+    - sudo apt-get -y update
+    - sudo apt-get -y install ansible
+
+dependencies:
+  post:
+    - ansible-galaxy install -r spec/support/requirements.yml
+
+test:
+  pre:
+    - ansible-playbook -i spec/support/inventory spec/support/playbook.yml --syntax-check
+    - ansible-playbook -i spec/support/inventory spec/support/playbook.yml --connection local
