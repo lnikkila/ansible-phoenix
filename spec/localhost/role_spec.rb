@@ -3,7 +3,7 @@ RSpec.describe server(:localhost) do
     it { should exist }
     it { should belong_to_group "phoenix" }
 
-    it { should have_home_directory "/home/phoenix" }
+    it { should have_home_directory "/var/www" }
   end
 
   describe file("/var/www") do
