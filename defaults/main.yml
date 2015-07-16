@@ -40,7 +40,7 @@ phoenix_group: phoenix
 # Disable this also if you're running Vagrant and have Phoenix at /vagrant.
 # The shared directory cannot host executables. That will cause problems with
 # Mix as it installs dependencies there.
-phoenix_system_user: false
+phoenix_system_user: true
 
 # Command for running the server.
 phoenix_bin: mix phoenix.server
