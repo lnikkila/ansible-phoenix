@@ -17,9 +17,11 @@
 - name: Ensure app user exists
   become: true
   user:
-    state: present
-    name:  "{{ phoenix_user }}"
-    group: "{{ phoenix_group }}"
+    state:  present
+    name:   "{{ phoenix_user }}"
+    group:  "{{ phoenix_group }}"
+    system: "{{ phoenix_system_user }}"
+    home:   "{{ phoenix_system_user | ternary(phoenix_path, '/home/' ~ phoenix_user) }}"
   notify: restart phoenix
 
 - name: Create app directory with correct permissions

@@ -65,6 +65,17 @@ phoenix_path: /var/www
 phoenix_user:  phoenix
 phoenix_group: phoenix
 
+# Whether to create a system user. System users have the system flag set to true
+# and have a home directory at {{ phoenix_path }}.
+#
+# Set this to false if you want to use an existing user. The system flag cannot
+# be changed after a user has been created.
+#
+# Disable this also if you're running Vagrant and have Phoenix at /vagrant.
+# The shared directory cannot host executables. That will cause problems with
+# Mix as it installs dependencies there.
+phoenix_system_user: false
+
 # Command for running the server.
 phoenix_bin: mix phoenix.server
 ```
