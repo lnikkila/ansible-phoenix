@@ -1,5 +1,12 @@
 ---
 
+- name: Stop Phoenix if it exists for editing the user
+  become: true
+  service:
+    name: phoenix
+    state: stopped
+  ignore_errors: true
+
 - name: Ensure app user group exists
   become: true
   group:
