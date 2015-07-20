@@ -8,7 +8,6 @@ RSpec.describe server(:localhost) do
 
   describe file("/var/www") do
     it { should be_directory }
-    it { should be_mode 755 }
 
     it { should be_owned_by     "phoenix" }
     it { should be_grouped_into "phoenix" }

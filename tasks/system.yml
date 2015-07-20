@@ -31,6 +31,5 @@
     path:    "{{ phoenix_path }}"
     owner:   "{{ phoenix_user }}"
     group:   "{{ phoenix_group }}"
-    mode:    0755
     recurse: true
   notify: restart phoenix
